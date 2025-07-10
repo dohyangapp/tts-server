@@ -25,10 +25,10 @@ app.post('/tts', async (req, res) => {
     const audioBase64 = response.audioContent.toString('base64');
     const audioUrl = `data:audio/mp3;base64,${audioBase64}`;
 
-    res.status(200).json({ audioUrl });  // ✅ 반드시 JSON 응답
+    res.status(200).json({ audioUrl }); // ✅ 정확히 JSON 형태로 응답
   } catch (err) {
     console.error('❌ TTS 처리 오류:', err);
-    res.status(500).send('TTS 처리 중 오류 발생');
+    res.status(500).json({ error: 'TTS 처리 중 오류 발생' }); // ✅ JSON 에러 응답
   }
 });
 

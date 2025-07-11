@@ -24,17 +24,17 @@ app.post('/tts', async (req, res) => {
 
     const audioBase64 = response.audioContent.toString('base64');
     const audioUrl = `data:audio/mp3;base64,${audioBase64}`;
-
-    res.status(200).json({ audioUrl }); // ✅ 정확히 JSON 형태로 응답
+    res.status(200).json({ audioUrl });
   } catch (err) {
     console.error('❌ TTS 처리 오류:', err);
-    res.status(500).json({ error: 'TTS 처리 중 오류 발생' }); // ✅ JSON 에러 응답
+    res.status(500).json({ error: 'TTS 처리 중 오류 발생' });
   }
 });
 
-// 기본 확인용 라우트
+// 기본 라우터
 app.get('/', (req, res) => {
   res.send('✅ TTS 서버 작동 중');
 });
 
+// ✅ ✅ ✅ 마지막 줄 추가 (Vercel용 필수!)
 module.exports = app;
